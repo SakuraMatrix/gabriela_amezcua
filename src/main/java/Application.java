@@ -33,8 +33,8 @@ public class Application {
                     .withPartitionKey("SS", DataTypes.INT)
                     .withColumn("customer_Fname", DataTypes.TEXT)
                     .withColumn("customer_Lnname", DataTypes.TEXT)
-                    .withColumn("customer_AcctNo", DataTypes.INT)
-                    .withColumn("customer_DOB", DataTypes.TIMESTAMP);
+                    .withColumn("customer_AcctNo", DataTypes.INT);
+                    //.withColumn("customer_DOB", DataTypes.TIMESTAMP);
 
             // Execute Create Table.
             session.execute(customers.build());
@@ -44,7 +44,7 @@ public class Application {
 
             // New Book instance.
             Customer gaby = new Customer(545619931, "Gabriela", "Amezcua",
-                    323344193, Instant.now());
+                    323344193);
 
             // Create.  put in post request look at tams in the server
             dao.create(gaby);

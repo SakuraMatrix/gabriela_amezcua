@@ -6,16 +6,16 @@ public class Customer {
         private String customer_Fname;
         private String customer_Lnname;
         private int customer_AcctNo;
-        private Instant customer_DOB;
+        //private Instant customer_DOB;
 
         // Constructor
         public Customer (int SS, String customer_Fname, String customer_Lnname,
-                    int customer_AcctNo, Instant customer_DOB){
+                    int customer_AcctNo){
             this.SS = SS;
             this.customer_Fname = customer_Fname;
             this.customer_Lnname = customer_Lnname;
             this.customer_AcctNo = customer_AcctNo;
-            this.customer_DOB = customer_DOB;
+           // this.customer_DOB = customer_DOB;
         }
 
         // Getters and Setters
@@ -51,12 +51,12 @@ public class Customer {
             this.customer_AcctNo = customer_AcctNo;
         }
 
-        public Instant getCustomer_DOB() {
-            return customer_DOB;
-        }
-
-        public void setCustomer_DOB(Instant customer_DOB) {
-            this.customer_DOB = customer_DOB;
-        }
+//        public Instant getCustomer_DOB() {
+//            return customer_DOB;
+//        }
+//
+//        public void setCustomer_DOB(Instant customer_DOB) {
+//            this.customer_DOB = customer_DOB;
+//        }
 
 }

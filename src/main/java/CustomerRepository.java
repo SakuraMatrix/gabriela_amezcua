@@ -17,15 +17,14 @@ public class CustomerRepository {
 
     public void create(Customer customer) {
         PreparedStatement insertStatement = session.prepare(
-                "INSERT INTO Account.customers (SS, customer_Fname, customer_Lnname, customer_AcctNo, " +
-                        "customer_DOB) VALUES (?, ?, ?, ?, ?)");
+                "INSERT INTO Accounts.customers (SS, customer_Fname, customer_Lnname, customer_AcctNo) VALUES (?, ?, ?, ?)");
 
         BoundStatement boundStatement = insertStatement.bind(
                 customer.getSS(),
                 customer.getCustomer_Fname(),
                 customer.getCustomer_Lnname(),
-                customer.getCustomer_AcctNo(),
-                customer.getCustomer_DOB());
+                customer.getCustomer_AcctNo());
+                //customer.getCustomer_DOB());
         session.execute(boundStatement);
     }
 
@@ -33,23 +32,23 @@ public class CustomerRepository {
         return Mono.from(session.executeReactive(
                 // UNCOMMENT for JSON result ('comment other SELECT statement')
 //          "SELECT JSON * FROM" +
-            "SELECT * FROM  Account.customers WHERE customer_Fname = ? ALLOW FILTERING" ))
+            "SELECT * FROM  Accounts.customers WHERE customer_Fname = ? ALLOW FILTERING" ))
                 .map(row -> new Customer(row.getInt("SS"),row.getString("customer_Fname"),
                         row.getString("customer_Lnname"),
-                        row.getInt("customer_AcctNo"), row.getInstant("customer_DOB")));
+                        row.getInt("customer_AcctNo")));
         }
     public Flux<Customer> readAll() {
         return Flux.from(session.executeReactive(
                         // UNCOMMENT for JSON result ('comment other SELECT statement')
 //          "SELECT JSON * FROM" +
-                        "SELECT * FROM  Account.customers" ))
+                        "SELECT * FROM  Accounts.customers" ))
                 .map(row -> new Customer(row.getInt("SS"),row.getString("customer_Fname"),
                         row.getString("customer_Lnname"),
-                        row.getInt("customer_AcctNo"), row.getInstant("customer_DOB")));
+                        row.getInt("customer_AcctNo")));
     }
     public void update(Customer customer, int customer_AcctNo) {
         PreparedStatement updateStatement = session.prepare(
-                "UPDATE Account.customers SET customer_AcctNo = ? WHERE SS = ?");
+                "UPDATE Accounts.customers SET customer_AcctNo = ? WHERE SS = ?");
 
         BoundStatement boundStatement = updateStatement.bind( // Statement.
                 customer_AcctNo, customer.getSS());
@@ -58,7 +57,7 @@ public class CustomerRepository {
 
     public void delete(Customer customer) {
         PreparedStatement deleteStatement = session.prepare(
-                "DELETE FROM Account.customers WHERE SS = ?");
+                "DELETE FROM Accounts.customers WHERE SS = ?");
 
         BoundStatement boundStatement = deleteStatement.bind(customer.getSS());
         session.execute(boundStatement);
