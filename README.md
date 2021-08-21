@@ -1,12 +1,19 @@
 # gabriela_amezcua
-# ATM machine
+# Bank checking accounts
 
-An application designed to help customer manage their bank account
+An application designed for users to manage customer’s bank accounts
 
-## Actores & Features
+##Features
 
--A user can 1.See balance account, 2.deposit money in account 3. Take out money or 4.Exit
+-A user can 
+1.retrieve all bank accounts including accounts owners’ information.
 
-## Structure description
-
-There will be a recurring menu asking the customer what he/she wants to do either to see account balance, deposit money, take out money or exit. The customer can perform any of these operations recurrently until the customer exits. 
+## Technology
+-Java 8
+-Maven
+-Reactor Netty
+-Docker
+-Cassandra
+-Junit testing
+-Logs file
+-GitHub
